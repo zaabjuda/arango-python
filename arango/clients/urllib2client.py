@@ -75,10 +75,7 @@ class Urllib2Client(RequestsBase):
 
         req = Request(url)
         req.add_header('Content-Type', 'application/json')
-        if hasattr(req, 'add_data'):
-            req.add_data(data.encode(cls.encoding))
-        else:
-            req.data = data.encode(cls.encoding)
+        req.data = data.encode(cls.encoding)
 
         response = urlopen(req, **cls._config)
         content = response.read()
